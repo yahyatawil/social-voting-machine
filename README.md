@@ -43,6 +43,8 @@ TO DO :
 
 3.repear some bugs .
 
+4.support dealing with huge database
+
 
 IN FUTURE:
 -------------------------------------------
