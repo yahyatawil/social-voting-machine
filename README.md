@@ -35,4 +35,19 @@ respo files :
 
 *form.html , form.php : basic feature form for registration in the database .
 
+TO DO :
+--------------------------------------------
+1.add registeration request for the person how want votes .
+
+2.re arrange the code into functions .
+
+3.repear some bugs .
+
+
+IN FUTURE:
+-------------------------------------------
+support more graphical interfaces like GLCD .
+
+USE serial connection wirlessly not throught usb cable .
+
 
