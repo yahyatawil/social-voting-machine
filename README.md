@@ -43,7 +43,9 @@ TO DO :
 
 3.repear some bugs .
 
-4.support dealing with huge database
+4.support dealing with huge database . 
+
+5.link stackextchange reputation with this voting machine system .
 
 
 IN FUTURE:
