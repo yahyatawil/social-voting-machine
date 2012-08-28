@@ -39,7 +39,7 @@ TO DO :
 --------------------------------------------
 1.add registeration request for the person how want votes .
 
-2.re arrange the code into functions .
+2.re arrange the code into functions .(done)
 
 3.repear some bugs .
 
