@@ -6,14 +6,19 @@ beta
 */  
 #include <LiquidCrystal.h>
 #include <Keypad.h>
+//four keys 
 const byte ROWS = 2;
 const byte COLS = 2;
 char keys[ROWS][COLS] = {  {'1','2'},  {'4','5'}  };
 byte rowPins[ROWS] = {8,9}; 
 byte colPins[COLS] = {10,11}; 
+
+
 Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
 LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
-char v_user[31];
+
+char v_user[31];// string to store in it the name of the member will be voted 
+
 byte plus[8]={
  B11111,
  B11111,
@@ -24,17 +29,32 @@ byte plus[8]={
  B11111,
  B11111
 };
-void setup() {
-  Serial.begin(9600);
-  lcd.begin(16, 2); 
+
+/*
+welcom function print some welcoming and guiding messages 
+*/
+void welcom()
+{
+ lcd.clear();
+   lcd.setCursor(0,0);
+  lcd.write("welcom to voting");
+  lcd.setCursor(0,1);
+  lcd.write("machine!");
+  delay(3000);
+  lcd.clear();
+   lcd.setCursor(0,0);
+  lcd.write("stay hold any ");
+  lcd.setCursor(0,1);
+  lcd.write("key");
+  delay(3000); 
 }
 
-void loop() {
-  lcd.createChar(1,plus);
-  lcd.write("press any key ");
-//  char ans = Serial.read();
-  if(keypad.getKey())
-  {
+/*
+select function will recive the first letter of the user will be voted 
+*/
+void select()
+{
+    lcd.createChar(1,plus);//plus simbol
     lcd.clear();
     lcd.setCursor(0,0);
     lcd.write("please enter the ");
@@ -62,7 +82,14 @@ void loop() {
      if(keypad.waitForKey()=='1')
      {i=0;//Serial.write(c);
    break;}}}
-     int j =1;
+}
+
+/*
+voting function is for voting process 
+*/
+void voting()
+{
+ int j =1;
      lcd.clear();
      lcd.print("press 1 when ");
      lcd.setCursor(0,5);
@@ -77,22 +104,23 @@ void loop() {
      if(keypad.waitForKey()=='1'){Serial.write("1");j=0;break;}
      Serial.write(keypad.waitForKey());
      }
- 
-      }
+  
+}
+void setup() {
+  Serial.begin(9600);
+  lcd.begin(16, 2); 
+}
 
-       
-        
-
-  else
+void loop() {
+  welcom();
+  
+  if(keypad.getKey())
   {
-    lcd.clear();
-   lcd.setCursor(0,0);
-  lcd.write("welcom to voting");
-//   delay(2000);
-  lcd.setCursor(0,1);
-  lcd.write("machine!");
+    select();
+     
+     voting();
   }
-
+  
 }
 
 
